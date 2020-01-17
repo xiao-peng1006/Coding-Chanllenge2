@@ -1,25 +1,21 @@
 class Solution {
     public void sortColors(int[] nums) {
-        // Counting the number of colors
-        int zeroes = 0, ones = 0;
-        for (int num : nums) {
-            if (num == 0) {
-                zeroes++;
-            } else if (num == 1) {
-                ones++;
+        // Three way sorting
+        int zero = 0, two = nums.length - 1, i = 0;
+        while (i <= two) {
+            if (nums[i] == 0) {
+                swap(nums, zero++, i);
+            } else if (nums[i] == 2) {
+                swap(nums, two--, i--);
             }
+            i++;
         }
 
-        for (int i = 0; i < zeroes; i++) {
-            nums[i] = 0;
-        }
+    }
 
-        for (int i = zeroes; i < zeroes + ones; i++) {
-            nums[i] = 1;
-        }
-
-        for (int i = zeroes + ones; i < nums.length; i++) {
-            nums[i] = 2;
-        }
+    public void swap(int[] nums, int a, int b) {
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
     }
 }
