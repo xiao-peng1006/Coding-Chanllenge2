@@ -1,12 +1,12 @@
 class Solution {
     public void sortColors(int[] nums) {
         // Three way sorting
-        int zero = 0, two = nums.length - 1, i = 0;
-        while (i <= two) {
+        int zero = -1, two = nums.length, i = 0;
+        while (i < two) {
             if (nums[i] == 0) {
-                swap(nums, zero++, i);
+                swap(nums, ++zero, i);
             } else if (nums[i] == 2) {
-                swap(nums, two--, i--);
+                swap(nums, --two, i--);
             }
             i++;
         }
