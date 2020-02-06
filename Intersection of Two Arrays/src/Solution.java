@@ -9,14 +9,14 @@ class Solution {
 
         HashSet<Integer> set2 = new HashSet<>();
         for (int num:nums1) {
-            set2.add(num);
+            if (set1.contains(num)) {
+                set2.add(num);
+            }
         }
 
-        set1.retainAll(set2);
-
-        int[] res = new int[set1.size()];
+        int[] res = new int[set2.size()];
         int idx = 0;
-        for (int num:set1) {
+        for (int num:set2) {
             res[idx++] = num;
         }
         return res;
