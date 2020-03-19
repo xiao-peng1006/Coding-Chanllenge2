@@ -14,26 +14,18 @@ class Solution {
     }
 
     public ListNode oddEvenList(ListNode head) {
-        if (head == null || head.next == null || head.next.next == null) {
-            return head;
+        if (head == null) {
+            return null;
         }
-        ListNode evenHead = head.next, evenCurr = evenHead;
-        ListNode oddCurr = head;
-        ListNode curr = head.next.next;
-        boolean isEven = false;
-        while (curr != null) {
-            if (isEven) {
-                evenCurr.next = curr;
-                evenCurr = curr;
-            } else {
-                oddCurr.next = curr;
-                oddCurr = curr;
-            }
-            isEven = !isEven;
-            curr = curr.next;
+
+        ListNode odd = head, even = head.next, evenHead = even;
+        while (even != null && even.next != null) {
+            odd.next = odd.next.next;
+            odd = odd.next;
+            even.next = even.next.next;
+            even = even.next;
         }
-        oddCurr.next = evenHead;
-        evenCurr.next = null;
+        odd.next = evenHead;
         return head;
     }
 }
