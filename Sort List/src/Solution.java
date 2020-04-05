@@ -23,7 +23,7 @@ class Solution {
             fast = fast.next.next;
         }
         pre.next = null;
-        return merge(sortList(fast), sortList(slow));
+        return merge(sortList(head), sortList(slow));
     }
 
     public ListNode merge(ListNode l1, ListNode l2) {
