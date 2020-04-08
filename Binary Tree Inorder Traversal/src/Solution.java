@@ -25,17 +25,17 @@ class Solution {
         }
 
         List<Integer> res = new ArrayList<>();
-        preorder(root, res);
+        inorder(root, res);
         return res;
     }
 
-    public void preorder(TreeNode node, List<Integer> list) {
+    public void inorder(TreeNode node, List<Integer> list) {
         if (node == null) {
             return;
         }
 
-        preorder(node.left, list);
+        inorder(node.left, list);
         list.add(node.val);
-        preorder(node.right, list);
+        inorder(node.right, list);
     }
 }
